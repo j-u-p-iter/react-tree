@@ -1,0 +1,30 @@
+react-tree expose API, that:
+  - allows get access to activeIndex (getActiveIndex method);
+  - toggle active index (toggleActiveIndex method) (to be able to open/close item)
+
+Let's create react-tree. This react tree can be used to create rubric trees, navigation and similar tree-type structures.
+
+The main parts of such tree:
+  - config. This is data, that define tree structure.
+    Config should contain unique keys to determine each node. Depending on tree nature this key can contain rubric slug, path and etc.
+
+  - node coordinate. Key concept in the whole tree. Coordinate determines the way to find node.
+    Coordinate consists of index of node on eash sub level (from top to bottom, from left to right).
+
+  - treeMap - this is the map between each unique key of each node and coordinate of this node.
+    For navigation it can look like this:
+    {
+      '/some-path': '1:2:3:4:5',
+      '/completely-another-path': '1:2:10:4'
+    }
+
+  Several stages:
+    - initialization stage.
+      During this stage we:
+      - write config to state and extend this data with several additional data (new keys for each node):
+        * active: Boolean;
+      - create treeMap to be able to find node by it's id very quickly, using coordinates.
+      
+
+  
+    

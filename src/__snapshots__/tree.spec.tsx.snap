@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tree renders properly 1`] = `
+<ul>
+  <li
+    data-active="true"
+    id="/some-id"
+  >
+    some title
+    <ul>
+      <li
+        data-active="true"
+        id="/some-new"
+      >
+        cool title
+        <ul>
+          <li
+            data-active="true"
+            id="/some-id-1"
+          >
+            coolio title
+            <ul>
+              <li
+                data-active="true"
+                id="/some-id-2"
+              >
+                some title
+                <ul>
+                  <li
+                    data-active="false"
+                    id="/some-id-10"
+                  >
+                    some title
+                  </li>
+                  <li
+                    data-active="false"
+                    id="/some-id-20"
+                  >
+                    some title
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li
+    data-active="false"
+    id="/one-more-id"
+  >
+    some title
+    <ul>
+      <li
+        data-active="false"
+        id="/and-more-some-id"
+      >
+        some title
+        <ul>
+          <li
+            data-active="false"
+            id="/one-more-more-id"
+          >
+            some title
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders properly 2`] = `
+<ul>
+  <li
+    data-active="true"
+    id="/some-id"
+  >
+    some title
+    <ul>
+      <li
+        data-active="true"
+        id="/some-new"
+      >
+        cool title
+        <ul>
+          <li
+            data-active="false"
+            id="/some-id-1"
+          >
+            coolio title
+            <ul>
+              <li
+                data-active="true"
+                id="/some-id-2"
+              >
+                some title
+                <ul>
+                  <li
+                    data-active="false"
+                    id="/some-id-10"
+                  >
+                    some title
+                  </li>
+                  <li
+                    data-active="false"
+                    id="/some-id-20"
+                  >
+                    some title
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li
+    data-active="false"
+    id="/one-more-id"
+  >
+    some title
+    <ul>
+      <li
+        data-active="false"
+        id="/and-more-some-id"
+      >
+        some title
+        <ul>
+          <li
+            data-active="false"
+            id="/one-more-more-id"
+          >
+            some title
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+`;
