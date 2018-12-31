@@ -1,89 +1,125 @@
-import * as React from 'react';
+import * as React from "react";
 
-interface ITree {
-  config: any;
-  activeId?: string;
-  children: ({ api }: { api: any }) => React.ReactNode;
+interface IChildrenProps {
+  api: {
+    toggleNode: Tree["toggleNode"];
+    getTree: () => ITreeState["tree"];
+  };
 }
 
+interface IConfigItem {
+  id: string;
+  title: string;
+  children?: IConfigItem[];
+}
 
-export class Tree extends React.Component<ITree> {
-  treeMap: any = {}
+type TreeType = INode[];
 
-  state = {
-    tree: [], 
-  }  
+interface INode extends IConfigItem {
+  active: boolean;
+  children: TreeType;
+}
 
-  initializeTree = (activeId: any) => {
-    this.treeMap = this.createTreeMap(this.props.config);
+interface ITreeProps {
+  config: IConfigItem[];
+  activeId?: string;
+  children: (childrenProps: IChildrenProps) => React.ReactNode;
+}
 
-    this.setState({
-      tree: this.createTreeConfigExtender((node: any) => {
-        return {
-          active: activeId && this.treeMap[activeId].includes(node.id) ? true : false, 
-        }
-      })(this.props.config),
-    })
+interface ITreeState {
+  tree: TreeType;
+}
+
+interface ITreeMap {
+  [key: string]: any;
+}
+
+export class Tree extends React.Component<ITreeProps, ITreeState> {
+  public state: ITreeState = {
+    tree: []
+  };
+  private treeMap: ITreeMap = {};
+
+  public toggleNode = (event: React.SyntheticEvent<HTMLElement>): void => {
+    event.stopPropagation();
+
+    this.extendOnToggle(event.currentTarget.id);
+  };
+
+  public componentDidMount() {
+    this.initializeTree(this.props.activeId);
   }
 
-  createTreeConfigExtender = (predicateFn: any) => {
-    return function extender (data: any) {
-      return data.reduce((result: any, node: any) => {
-        return [
-          ...result, 
-          { 
-            ...node,
-            ...predicateFn(node),
-            children: node.children ? extender(node.children) : null,
-          }
-        ];
-      }, []);
-    }
-  }
-
-  extendOnToggle = (nodeId: any) => {
-    this.setState({
-      tree: this.createTreeConfigExtender((node: any) => {
-        return {
-          active: nodeId === node.id ? !node.active : node.active, 
-        }
-      })(this.state.tree)
+  public render() {
+    return this.props.children({
+      api: {
+        toggleNode: this.toggleNode,
+        getTree: () => this.state.tree
+      }
     });
   }
 
-  createTreeMap = (data: any, parentNodePath?: string) => {
-    return data.reduce((resultTreeMap: any, node: any) => {
-      const nodePath = parentNodePath ? `${parentNodePath}:${node.id}` : node.id;
+  private createTreeExtender = (
+    customExtenderFn: (node: any) => Partial<INode>
+  ) => {
+    return function extender(data: IConfigItem[]): TreeType {
+      return data.reduce((result: any, node: any) => {
+        return [
+          ...result,
+          {
+            ...node,
+            ...customExtenderFn(node),
+            children: node.children ? extender(node.children) : null
+          }
+        ];
+      }, []);
+    };
+  };
 
-      resultTreeMap[node.id] = nodePath;  
+  private setTreeState = (treeState: TreeType) => {
+    this.setState({
+      tree: treeState
+    });
+  };
+
+  private initializeTree = (activeId?: INode["id"]): void => {
+    this.treeMap = this.createTreeMap(this.props.config);
+
+    const initialTreeState = this.createTreeExtender((node: IConfigItem) => ({
+      active:
+        activeId && this.treeMap[activeId].includes(node.id) ? true : false
+    }))(this.props.config);
+
+    this.setTreeState(initialTreeState);
+  };
+
+  private extendOnToggle = (nodeId: string): void => {
+    const toggledTreeState = this.createTreeExtender((node: INode) => ({
+      active: nodeId === node.id ? !node.active : node.active
+    }))(this.state.tree);
+
+    this.setTreeState(toggledTreeState);
+  };
+
+  private createTreeMap = (
+    data: IConfigItem[],
+    parentNodePath?: string
+  ): ITreeMap => {
+    return data.reduce((resultTreeMap: ITreeMap, node: IConfigItem) => {
+      const nodePath = parentNodePath
+        ? `${parentNodePath}:${node.id}`
+        : node.id;
+
+      resultTreeMap[node.id] = nodePath;
 
       if (node.children) {
         resultTreeMap = {
           ...resultTreeMap,
-          ...this.createTreeMap(node.children, nodePath),
-        }
+          ...this.createTreeMap(node.children, nodePath)
+        };
       }
 
       return resultTreeMap;
     }, {});
-  }
-
-  toggleState = (event: any) => {
-    event.stopPropagation();
-
-    this.extendOnToggle(event.currentTarget.id);
-  }
-
-  componentDidMount() {
-    this.initializeTree(this.props.activeId);
-  }
-
-  render() {
-    return this.props.children({
-      api: { 
-        toggleState: this.toggleState, 
-        getTree: () => this.state.tree,
-      },
-    });
-  }
-};
+  };
+}

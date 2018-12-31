@@ -1,0 +1,356 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tree renders correctly by default 1`] = `
+<ul>
+  <li
+    data-active="false"
+    id="1"
+  >
+    Title 1
+    <ul>
+      <li
+        data-active="false"
+        id="2"
+      >
+        Title 2
+        <ul>
+          <li
+            data-active="false"
+            id="3"
+          >
+            Title 3
+            <ul>
+              <li
+                data-active="false"
+                id="4"
+              >
+                Title 4
+                <ul>
+                  <li
+                    data-active="false"
+                    id="5"
+                  >
+                    Title 5
+                  </li>
+                  <li
+                    data-active="false"
+                    id="6"
+                  >
+                    Title 6
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li
+    data-active="false"
+    id="7"
+  >
+    Title 7
+    <ul>
+      <li
+        data-active="false"
+        id="8"
+      >
+        Title 8
+        <ul>
+          <li
+            data-active="false"
+            id="9"
+          >
+            Title 9
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+`;
+
+exports[`Tree renders correctly with activeId 1`] = `
+<ul>
+  <li
+    data-active="true"
+    id="1"
+  >
+    Title 1
+    <ul>
+      <li
+        data-active="true"
+        id="2"
+      >
+        Title 2
+        <ul>
+          <li
+            data-active="false"
+            id="3"
+          >
+            Title 3
+            <ul>
+              <li
+                data-active="false"
+                id="4"
+              >
+                Title 4
+                <ul>
+                  <li
+                    data-active="false"
+                    id="5"
+                  >
+                    Title 5
+                  </li>
+                  <li
+                    data-active="false"
+                    id="6"
+                  >
+                    Title 6
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li
+    data-active="false"
+    id="7"
+  >
+    Title 7
+    <ul>
+      <li
+        data-active="false"
+        id="8"
+      >
+        Title 8
+        <ul>
+          <li
+            data-active="false"
+            id="9"
+          >
+            Title 9
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+`;
+
+exports[`Tree toggles nodes correctly 1`] = `
+<ul>
+  <li
+    data-active="true"
+    id="1"
+  >
+    Title 1
+    <ul>
+      <li
+        data-active="true"
+        id="2"
+      >
+        Title 2
+        <ul>
+          <li
+            data-active="false"
+            id="3"
+          >
+            Title 3
+            <ul>
+              <li
+                data-active="false"
+                id="4"
+              >
+                Title 4
+                <ul>
+                  <li
+                    data-active="false"
+                    id="5"
+                  >
+                    Title 5
+                  </li>
+                  <li
+                    data-active="false"
+                    id="6"
+                  >
+                    Title 6
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li
+    data-active="false"
+    id="7"
+  >
+    Title 7
+    <ul>
+      <li
+        data-active="false"
+        id="8"
+      >
+        Title 8
+        <ul>
+          <li
+            data-active="false"
+            id="9"
+          >
+            Title 9
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+`;
+
+exports[`Tree toggles nodes correctly 2`] = `
+<ul>
+  <li
+    data-active="true"
+    id="1"
+  >
+    Title 1
+    <ul>
+      <li
+        data-active="true"
+        id="2"
+      >
+        Title 2
+        <ul>
+          <li
+            data-active="true"
+            id="3"
+          >
+            Title 3
+            <ul>
+              <li
+                data-active="false"
+                id="4"
+              >
+                Title 4
+                <ul>
+                  <li
+                    data-active="false"
+                    id="5"
+                  >
+                    Title 5
+                  </li>
+                  <li
+                    data-active="false"
+                    id="6"
+                  >
+                    Title 6
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li
+    data-active="false"
+    id="7"
+  >
+    Title 7
+    <ul>
+      <li
+        data-active="false"
+        id="8"
+      >
+        Title 8
+        <ul>
+          <li
+            data-active="false"
+            id="9"
+          >
+            Title 9
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+`;
+
+exports[`Tree toggles nodes correctly 3`] = `
+<ul>
+  <li
+    data-active="true"
+    id="1"
+  >
+    Title 1
+    <ul>
+      <li
+        data-active="false"
+        id="2"
+      >
+        Title 2
+        <ul>
+          <li
+            data-active="true"
+            id="3"
+          >
+            Title 3
+            <ul>
+              <li
+                data-active="false"
+                id="4"
+              >
+                Title 4
+                <ul>
+                  <li
+                    data-active="false"
+                    id="5"
+                  >
+                    Title 5
+                  </li>
+                  <li
+                    data-active="false"
+                    id="6"
+                  >
+                    Title 6
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li
+    data-active="false"
+    id="7"
+  >
+    Title 7
+    <ul>
+      <li
+        data-active="false"
+        id="8"
+      >
+        Title 8
+        <ul>
+          <li
+            data-active="false"
+            id="9"
+          >
+            Title 9
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+`;
