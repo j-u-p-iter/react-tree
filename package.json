@@ -1,6 +1,6 @@
 {
   "name": "@j.u.p.iter/react-tree",
-  "version": "0.0.1",
+  "version": "0.0.0-semantically-released",
   "description": "React tree to create tree-type structures like rubricator, navigation and etc.",
   "keywords": [
     "react",
