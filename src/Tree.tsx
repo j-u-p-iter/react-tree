@@ -7,11 +7,11 @@ interface IChildrenProps {
   };
 }
 
-interface IConfigItem {
+export type IConfigItem<T = {}> = T & {
   id: string;
   title: string;
   children?: IConfigItem[];
-}
+};
 
 type TreeType = INode[];
 

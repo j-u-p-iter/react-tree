@@ -1,4 +1,6 @@
-export const treeConfig = [
+import { IConfigItem } from "./Tree";
+
+export const treeConfig: IConfigItem[] = [
   {
     id: "1",
     title: "Title 1",
